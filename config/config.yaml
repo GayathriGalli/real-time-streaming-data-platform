@@ -1,0 +1,30 @@
+# Real-Time Streaming Data Platform Configuration
+
+kafka:
+  bootstrap_servers: "localhost:9092"
+  topic: "transactions"
+  consumer_group: "streaming-data-platform"
+
+spark:
+  app_name: "RealTimeStreamingDataPlatform"
+  master: "local[*]"
+  shuffle_partitions: 4
+
+streaming:
+  checkpoint_base_path: "data/checkpoints"
+  trigger_interval: "10 seconds"
+
+delta:
+  bronze_path: "data/delta/bronze"
+  silver_path: "data/delta/silver"
+  gold_path: "data/delta/gold"
+
+data_quality:
+  enable_null_checks: true
+  enable_duplicate_checks: true
+  enable_amount_validation: true
+  minimum_transaction_amount: 0
+
+monitoring:
+  enable_logging: true
+  log_level: "INFO"
