@@ -31,5 +31,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run data quality tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
-          pytest tests/ -v
+          python -m pytest tests/ -v
